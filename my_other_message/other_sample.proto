@@ -1,0 +1,10 @@
+syntax = "proto3";
+package make87_messages.template.my_other_message;
+
+import "make87_messages/template/my_message/sample.proto";
+import "make87_messages/template_other/message.proto";
+
+message OtherSampleMessage {
+    repeated make87_messages.template.my_message.SampleMessage sub_messages = 1;
+    make87_messages.template_other.OtherMessage other_message = 2;
+}

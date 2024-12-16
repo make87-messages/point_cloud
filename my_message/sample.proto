@@ -1,0 +1,21 @@
+syntax = "proto3";
+package make87_messages.template.my_message;
+
+import "google/protobuf/timestamp.proto";
+
+message SampleMessage {
+    enum SampleType {
+        UNDEFINED = 0;
+        NORMAL = 1;
+        SPECIAL = 2;
+    }
+    message SubMessage {
+        string name = 1;
+    }
+
+    google.protobuf.Timestamp timestamp = 1;
+    string name = 2;
+    int32 id = 3;
+    SampleType type = 4;
+    repeated SubMessage sub_messages = 5;
+}
