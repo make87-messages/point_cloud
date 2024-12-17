@@ -1,0 +1,33 @@
+syntax = "proto3";
+package make87_messages.lidar.laserscan;
+import "google/protobuf/timestamp.proto";
+
+
+message LaserScanRaw {
+    // Timestamp for when the scan was captured
+    google.protobuf.Timestamp timestamp = 1;
+
+    // The starting angle of the scan (in radians)
+    float angle_min = 2;
+
+    // The ending angle of the scan (in radians)
+    float angle_max = 3;
+
+    // Angular resolution of the scan (in radians per step)
+    float angle_increment = 4;
+
+    // Minimum measurable range (in meters)
+    float range_min = 5;
+
+    // Maximum measurable range (in meters)
+    float range_max = 6;
+
+    // Array of measured ranges (distances in meters)
+    repeated float ranges = 7;
+
+    // Array of measured intensities (unitless), optional
+    repeated float intensities = 8;
+
+    // Checksum for data integrity verification (optional)
+    uint32 checksum = 9;
+}
