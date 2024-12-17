@@ -1,0 +1,38 @@
+syntax = "proto3";
+package make87_messages.lidar.pointcloud;
+import "google/protobuf/timestamp.proto";
+
+message PointCloudRaw {
+    // Timestamp for when the point cloud packet was received
+    google.protobuf.Timestamp timestamp = 1;
+
+    // Header to identify the start of the packet
+    uint32 header = 2;
+
+    // Repeated field for all points in the point cloud
+    repeated Point points = 3;
+
+    // Frame ID to associate the point cloud with a specific coordinate frame
+    string frame_id = 4;
+
+    // Checksum for data integrity verification
+    uint32 checksum = 5;
+
+    // Message representing a single raw point in the point cloud
+    message Point {
+        // The x-coordinate of the point (in meters)
+        float x = 1;
+
+        // The y-coordinate of the point (in meters)
+        float y = 2;
+
+        // The z-coordinate of the point (in meters)
+        float z = 3;
+
+        // Intensity of the point (optional, unitless)
+        optional float intensity = 4;
+
+        // Additional quality or classification flag (optional)
+        optional uint32 classification = 5;
+    }
+}
